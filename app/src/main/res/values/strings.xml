@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RetrofitDemo</string>
+    <string name="base_url">http://markhere.cn:80/api/</string>
+</resources>
