@@ -19,8 +19,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-//import static com.ashokvarma.bottomnavigation.BottomNavigationBar.MODE_FIXED;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setBackgroundColor(Color.WHITE);
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
+        bottomNavigationBar.setInActiveColor(R.color.black);
 
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener(){
             @Override
@@ -43,12 +42,23 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(int position) {
             }
         });
-
+        BottomNavigationItem home = new BottomNavigationItem(R.mipmap.home_selected, "首页")
+                .setInactiveIconResource(R.mipmap.home)
+                .setActiveColor(Color.RED);
+        BottomNavigationItem discovery = new BottomNavigationItem(R.mipmap.discover_selected, "发现")
+                .setInactiveIconResource(R.mipmap.discover)
+                .setActiveColor(Color.YELLOW);
+        BottomNavigationItem message = new BottomNavigationItem(R.mipmap.message_selected, "消息")
+                .setInactiveIconResource(R.mipmap.message)
+                .setActiveColor(Color.GREEN);
+        BottomNavigationItem me = new BottomNavigationItem(R.mipmap.me_selected, "我")
+                .setInactiveIconResource(R.mipmap.me)
+                .setActiveColor(Color.BLUE);
         bottomNavigationBar
-                .addItem(new BottomNavigationItem(R.mipmap.home_selected, "Home").setInactiveIconResource(R.mipmap.home))
-                .addItem(new BottomNavigationItem(R.mipmap.discover_selected, "Books").setInactiveIconResource(R.mipmap.discover))
-                .addItem(new BottomNavigationItem(R.mipmap.message_selected, "Music").setInactiveIconResource(R.mipmap.message))
-                .addItem(new BottomNavigationItem(R.mipmap.me_selected, "Games").setInactiveIconResource(R.mipmap.me))
+                .addItem(home)
+                .addItem(discovery)
+                .addItem(message)
+                .addItem(me)
                 .initialise();
     }
 
