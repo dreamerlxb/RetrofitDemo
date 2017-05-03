@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.dreamerlxb.retrofitdemo.entity.MarkType;
@@ -45,9 +46,12 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationItem home = new BottomNavigationItem(R.mipmap.home_selected, "首页")
                 .setInactiveIconResource(R.mipmap.home)
                 .setActiveColor(Color.RED);
+        BadgeItem bi = new BadgeItem();
+        bi.setText("2");
         BottomNavigationItem discovery = new BottomNavigationItem(R.mipmap.discover_selected, "发现")
                 .setInactiveIconResource(R.mipmap.discover)
-                .setActiveColor(Color.YELLOW);
+                .setActiveColor(Color.YELLOW)
+                .setBadgeItem(bi);
         BottomNavigationItem message = new BottomNavigationItem(R.mipmap.message_selected, "消息")
                 .setInactiveIconResource(R.mipmap.message)
                 .setActiveColor(Color.GREEN);
