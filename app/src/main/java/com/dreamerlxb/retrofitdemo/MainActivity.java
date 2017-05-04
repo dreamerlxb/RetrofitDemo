@@ -12,6 +12,8 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.dreamerlxb.retrofitdemo.entity.MarkType;
 import com.dreamerlxb.retrofitdemo.service.MarkTypeService;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -72,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         MarkTypeService markTypeService = retrofit.create(MarkTypeService.class);
-        Call<List<MarkType>> call = markTypeService.getMarkTypes();
+//        JSONObject object = new JSONObject().put("order", "typeGroupId");
+        Call<List<MarkType>> call = markTypeService.getMarkTypes("{\"order\": \"typeGroupId\"}");
+//        Log.i()call.request().url().toString();
         call.enqueue(new Callback<List<MarkType>>() {
             @Override
             public void onResponse(Call<List<MarkType>> call, Response<List<MarkType>> response) {
