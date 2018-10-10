@@ -1,18 +1,18 @@
 package com.dreamerlxb.retrofitdemo;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.ashokvarma.bottomnavigation.TextBadgeItem;
 import com.dreamerlxb.retrofitdemo.entity.MarkType;
 import com.dreamerlxb.retrofitdemo.service.MarkTypeService;
 
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        BottomNavigationBar bottomNavigationBar = findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setBackgroundColor(Color.WHITE);
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar.setInActiveColor(R.color.black);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationItem home = new BottomNavigationItem(R.mipmap.home_selected, "首页")
                 .setInactiveIconResource(R.mipmap.home)
                 .setActiveColor(Color.RED);
-        BadgeItem bi = new BadgeItem();
+        TextBadgeItem bi = new TextBadgeItem();
         bi.setText("2");
         BottomNavigationItem discovery = new BottomNavigationItem(R.mipmap.discover_selected, "发现")
                 .setInactiveIconResource(R.mipmap.discover)
@@ -79,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
 //        Log.i()call.request().url().toString();
         call.enqueue(new Callback<List<MarkType>>() {
             @Override
-            public void onResponse(Call<List<MarkType>> call, Response<List<MarkType>> response) {
+            public void onResponse(@NonNull Call<List<MarkType>> call, @NonNull Response<List<MarkType>> response) {
                 Log.i("==Response==","return:"+ response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<List<MarkType>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<MarkType>> call, @NonNull Throwable t) {
                 Log.i("==Error==","return:"+ t.toString());
             }
         });
